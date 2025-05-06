@@ -81,7 +81,7 @@ update-linux
    * $(LANG=C date "+%a %b %d %Y") DasIstTobias placeholder@example.com - %{version}-%{release}
    - Update to version %{version}
 
-   * Sun May 06 2025 tobias@randombytes placeholder@example.com - 1.0-1
+   * Sun May 06 2025 tobias@randombytes placeholder@example.com - 0.1.0-1
    - Initial RPM package build.
    ```
 8. Build the .rpm File "rpmbuild -ba ~/rpmbuild/SPECS/update-linux.spec"
