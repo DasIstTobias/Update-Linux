@@ -123,5 +123,6 @@ update-linux
    RUN python3 setup.py --command-packages=stdeb.command bdist_deb
    ```
 5. Build the .deb File "sudo docker build -t update-linux-deb-builder ."
-6. Copy the .deb file out of the Docker container into your current directory "sudo docker cp temp-builder:/build/Update-Linux/deb_dist/python3-update-linux_1.0-1_all.deb ."
-7. Delete the Docker Container "sudo docker rm temp-builder"
+6. Create the Docker container "sudo docker create --name temp-builder update-linux-deb-builder"
+7. Copy the .deb file out of the Docker container into your current directory "sudo docker cp temp-builder:/build/Update-Linux/deb_dist/python3-update-linux_1.0-1_all.deb ."
+8. Delete the Docker Container "sudo docker rm temp-builder"
