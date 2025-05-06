@@ -36,7 +36,7 @@ def _spin_cursor():
 
     while not _spinner_stop_event.is_set():
         char = spinner_chars[i % len(spinner_chars)]
-        sys.stdout.write(f'\rdetecting package managers {char}')
+        sys.stdout.write(f'\r{BLUE}detecting package managers {char}')
         sys.stdout.flush()
         time.sleep(0.1)
         i += 1
@@ -58,7 +58,7 @@ def _spin_cursor_2():
 
     while not _spinner_2_stop_event.is_set():
         char = spinner_2_chars[i % len(spinner_2_chars)]
-        sys.stdout.write(f'\rrefresh package lists {char}')
+        sys.stdout.write(f'\r{BLUE}refresh package lists {char}')
         sys.stdout.flush()
         time.sleep(0.1)
         i += 1
@@ -66,6 +66,28 @@ def _spin_cursor_2():
     sys.stdout.write('\r' + ' ' * (len("refresh package lists") + 2) + '\r')
     sys.stdout.flush()
     _spinner_2_running = False
+
+# Spinner animation
+_spinner_3_running = False
+_spinner_3_stop_event = threading.Event()
+
+def _spin_cursor_3():
+    # displays rotating ascii spinner
+    global _spinner_3_running
+    _spinner_3_running = True
+    spinner_3_chars = ['[ | ]', '[ / ]', '[ - ]', '[ \\ ]']
+    i = 0
+
+    while not _spinner_3_stop_event.is_set():
+        char = spinner_3_chars[i % len(spinner_3_chars)]
+        sys.stdout.write(f'\r{BLUE}update packages {char}')
+        sys.stdout.flush()
+        time.sleep(0.1)
+        i += 1
+
+    sys.stdout.write('\r' + ' ' * (len("update packages") + 2) + '\r')
+    sys.stdout.flush()
+    _spinner_3_running = False
 
 
 ## ------ Productive code ------ ##
@@ -335,7 +357,85 @@ def program():
 
     ## ---- Update Packages ---- ##
 
-    # Write more code here
+    # Print text
+    print("update packages ", end='')
+    sys.stdout.flush()
+
+    g_start_time = time.perf_counter()
+ 
+    # Start Spinner in new Thread
+    _spinner_3_stop_event.clear()
+    spinner_3_thread = threading.Thread(target=_spin_cursor_3, daemon=True)
+    spinner_3_thread.start()
+
+    process_output = ""
+    process_error = ""
+    return_code = 1
+    
+    # Refresh package lists
+    if has_apt == True:
+        script_name = 'update_packages/apt.sh'
+        script_path = os.path.join(os.path.dirname(__file__), script_name)
+        os.system('chmod +x update_packages/apt.sh')
+
+        subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
+
+    if has_dnf == True:
+        script_name = 'update_packages/dnf.sh'
+        script_path = os.path.join(os.path.dirname(__file__), script_name)
+        os.system('chmod +x update_packages/dnf.sh')
+
+        subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
+
+    if has_zypper_leap == True:
+        script_name = 'update_packages/zypper-leap.sh'
+        script_path = os.path.join(os.path.dirname(__file__), script_name)
+        os.system('chmod +x update_packages/zypper-leap.sh')
+
+        subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
+
+    if has_zypper_tumbleweed == True:
+        script_name = 'update_packages/zypper-tumbleweed.sh'
+        script_path = os.path.join(os.path.dirname(__file__), script_name)
+        os.system('chmod +x update_packages/zypper-tumbleweed.sh')
+
+        subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
+
+    if has_pacman == True:
+        script_name = 'update_packages/pacman.sh'
+        script_path = os.path.join(os.path.dirname(__file__), script_name)
+        os.system('chmod +x update_packages/pacman.sh')
+
+        subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
+
+    if has_flatpak == True:
+        script_name = 'update_packages/flatpak.sh'
+        script_path = os.path.join(os.path.dirname(__file__), script_name)
+        os.system('chmod +x update_packages/flatpak.sh')
+
+        subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
+
+    if has_snap == True:
+        script_name = 'update_packages/snap.sh'
+        script_path = os.path.join(os.path.dirname(__file__), script_name)
+        os.system('chmod +x update_packages/snap.sh')
+
+        subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
+    
+    # Stop Spinner
+        _spinner_3_stop_event.set()
+        spinner_3_thread.join(timeout=1)
+        # Print green Message
+        print(f"\r\r{GREEN}update packages [ x ]{RESET}\n", end='')
+        sys.stdout.flush()
+
+    g_end_time = time.perf_counter()
+
+    elapsed_time_seconds = g_end_time - g_start_time
+    rounded_elapsed_time = round(elapsed_time_seconds)
+    print(f"packages updated in {rounded_elapsed_time} seconds\n")
+    g_start_time = None
+    g_end_time = None
 
 
 
