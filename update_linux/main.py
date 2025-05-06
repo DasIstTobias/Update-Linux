@@ -113,7 +113,7 @@ def detecting_distro():
     # Detect path to bash script
     script_name = 'detect_distro.sh'
     script_path = os.path.join(os.path.dirname(__file__), script_name)
-    os.system('chmod +x {script_path}')
+    os.system(f'chmod +x {script_path}')
 
     
     # Output error message if conditions are not fulfilled
@@ -300,42 +300,42 @@ def program():
     if has_apt == True:
         script_name = 'refresh_repos/apt.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_dnf == True:
         script_name = 'refresh_repos/dnf.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_zypper_leap == True:
         script_name = 'refresh_repos/zypper.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_zypper_tumbleweed == True:
         script_name = 'refresh_repos/zypper.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_pacman == True:
         script_name = 'refresh_repos/pacman.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_flatpak == True:
         script_name = 'refresh_repos/flatpak.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
     
@@ -376,49 +376,49 @@ def program():
     if has_apt == True:
         script_name = 'update_packages/apt.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_dnf == True:
         script_name = 'update_packages/dnf.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_zypper_leap == True:
         script_name = 'update_packages/zypper-leap.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_zypper_tumbleweed == True:
         script_name = 'update_packages/zypper-tumbleweed.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_pacman == True:
         script_name = 'update_packages/pacman.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_flatpak == True:
         script_name = 'update_packages/flatpak.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
 
     if has_snap == True:
         script_name = 'update_packages/snap.sh'
         script_path = os.path.join(os.path.dirname(__file__), script_name)
-        os.system('chmod +x {script_path}')
+        os.system(f'chmod +x {script_path}')
 
         subprocess.run([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
     
