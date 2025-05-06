@@ -1,0 +1,14 @@
+include update_linux/detect_distro.sh
+include update_linux/refresh_repos/apt.sh
+include update_linux/refresh_repos/dnf.sh
+include update_linux/refresh_repos/flatpak.sh
+include update_linux/refresh_repos/pacman.sh
+include update_linux/refresh_repos/zypper.sh
+include update_linux/update_packages/apt.sh
+include update_linux/update_packages/dnf.sh
+include update_linux/update_packages/flatpak.sh
+include update_linux/update_packages/pacman.sh
+include update_linux/update_packages/snap.sh
+include update_linux/update_packages/yay.sh
+include update_linux/update_packages/zypper-leap.sh
+include update_linux/update_packages/zypper-tumbleweed.sh
