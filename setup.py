@@ -37,9 +37,9 @@ setup(
             'update-linux=update_linux.main:main',
         ],
     },
+    license = "GPL-3.0-or-later",
     classifiers=[
         'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Operating System :: OS Independent',
     ],
     python_requires='>=3.11',
