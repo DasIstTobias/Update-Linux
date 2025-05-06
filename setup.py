@@ -15,7 +15,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'update-linux=update-linux.main:main',
+            'update-linux=update_linux.main:main',
         ],
     },
     classifiers=[
