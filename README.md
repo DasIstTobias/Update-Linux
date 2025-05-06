@@ -21,7 +21,7 @@ update-linux
 3. Use it with "sudo update-linux" instead of "python main.py"  
 (You can remove the package with your package manager and the package name "update-linux")
 
-## Install RPM Package
+## Install DEB Package
 1. Download the latest .deb file (or build it) from GitHub Releases
 2. Install it via Package manager (APT)
 3. Use it with "sudo update-linux" instead of "python main.py"  
