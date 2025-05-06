@@ -36,12 +36,12 @@ def _spin_cursor():
 
     while not _spinner_stop_event.is_set():
         char = spinner_chars[i % len(spinner_chars)]
-        sys.stdout.write(f'\rdetecting distro {char}')
+        sys.stdout.write(f'\rdetecting package managers {char}')
         sys.stdout.flush()
         time.sleep(0.1)
         i += 1
 
-    sys.stdout.write('\r' + ' ' * (len("detecting distro") + 2) + '\r')
+    sys.stdout.write('\r' + ' ' * (len("detecting package managers") + 2) + '\r')
     sys.stdout.flush()
     _spinner_running = False
 
@@ -112,7 +112,7 @@ def detecting_distro():
             return None
     
     # Print text
-    sys.stdout.write("detecting distro ")
+    sys.stdout.write("detecting package managers ")
     sys.stdout.flush()
 
     # Start Spinner in new Thread
@@ -153,7 +153,7 @@ def detecting_distro():
         spinner_thread.join(timeout=1)
         # Print green Message
         clear_screen()
-        sys.stdout.write(f"\r{GREEN}detecting distro [ x ]{RESET}\n")
+        sys.stdout.write(f"\r{GREEN}detecting package managers [ x ]{RESET}\n")
         sys.stdout.flush()
 
 
@@ -196,7 +196,7 @@ def program():
     input("[ Press enter to start Update ]")
     clear_screen()
 
-    ## ---- detecting_distro ---- ##
+    ## ---- detecting_package_manager ---- ##
     global g_start_time
     g_start_time = time.perf_counter()
 
