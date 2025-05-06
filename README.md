@@ -73,7 +73,7 @@ update-linux
    %files
    %license LICENSE
    %doc README.md
-   %{_bindir}/lyrics-search
+   %{_bindir}/update-linux
    %{python3_sitelib}/update_linux/
    %{python3_sitelib}/update_linux-%{version}-py*.egg-info
 
