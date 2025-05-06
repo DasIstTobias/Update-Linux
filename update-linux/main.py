@@ -11,6 +11,9 @@ import threading
 
 ## ------ Graphic designs ------ ##
 
+g_start_time = None
+g_end_time = None
+
 # Colour codes
 GREEN = '\033[92m'
 BLUE = '\033[94m'
@@ -194,6 +197,9 @@ def program():
     clear_screen()
 
     ## ---- detecting_distro ---- ##
+    global g_start_time
+    g_start_time = time.perf_counter()
+
     detecting_distro()
 
     # Create variables
@@ -208,6 +214,15 @@ def program():
     has_snap = detection_results['HAS_SNAP']
     has_flatpak = detection_results['HAS_FLATPAK']
     distro_unknown = detection_results['IS_UNKNOWN']
+
+
+    g_end_time = time.perf_counter()
+
+    elapsed_time_seconds = g_end_time - g_start_time
+    rounded_elapsed_time = round(elapsed_time_seconds)
+    print(f"package managers detected in {rounded_elapsed_time} seconds")
+    g_start_time = None
+    g_end_time = None
 
     # Outputs results of package manager detection
     print("Detected package managers: ")
@@ -245,8 +260,10 @@ def program():
     ## ---- Refresh package lists ---- ##
 
     # Print text
-    print("refresh package lists ", end='')
+    print("\nrefresh package lists ", end='')
     sys.stdout.flush()
+
+    g_start_time = time.perf_counter()
  
     # Start Spinner in new Thread
     _spinner_2_stop_event.clear()
@@ -306,6 +323,14 @@ def program():
         # Print green Message
         print(f"\r\r{GREEN}refresh package lists [ x ]{RESET}\n", end='')
         sys.stdout.flush()
+
+    g_end_time = time.perf_counter()
+
+    elapsed_time_seconds = g_end_time - g_start_time
+    rounded_elapsed_time = round(elapsed_time_seconds)
+    print(f"package lists refreshed in {rounded_elapsed_time} seconds\n")
+    g_start_time = None
+    g_end_time = None
     
 
     ## ---- Update Packages ---- ##
